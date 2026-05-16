@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete your order">
+    <title>Checkout - ShopLocal</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Simplified Header for Checkout -->
+    <header class="site-header checkout-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>ShopLocal</h1>
+                    </a>
+                </div>
+
+                <!-- Secure Checkout Badge -->
+                <div class="secure-badge">
+                    <span>🔒</span>
+                    <span>Secure Checkout</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="checkout-page">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1>Checkout</h1>
+                <p class="page-subtitle">Complete your order securely</p>
+            </header>
+
+            <!-- Checkout Progress Steps -->
+            <nav class="checkout-steps" aria-label="Checkout progress">
+                <ol class="steps-list">
+                    <li class="step active">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Shipping</span>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Payment</span>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Review</span>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- Checkout Layout -->
+            <div class="checkout-layout">
+                <!-- Checkout Form Section -->
+                <section class="checkout-form-section">
+                    <form id="checkoutForm" novalidate>
+                        <!-- Step 1: Shipping Information -->
+                        <section class="form-section active" id="shippingSection">
+                            <h2>Shipping Information</h2>
+
+                            <!-- Contact Information -->
+                            <fieldset class="form-group">
+                                <legend>Contact Information</legend>
+                                
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="email">Email Address <span class="required">*</span></label>
+                                        <input 
+                                            type="email" 
+                                            id="email" 
+                                            name="email" 
+                                            required 
+                                            placeholder="your.email@example.com"
+                                            aria-describedby="emailError"
+                                        >
+                                        <span class="error-message" id="emailError"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="phone">Phone Number <span class="required">*</span></label>
+                                        <input 
+                                            type="tel" 
+                                            id="phone" 
+                                            name="phone" 
+                                            required 
+                                            placeholder="+233 XX XXX XXXX"
+                                            aria-describedby="phoneError"
+                                        >
+                                        <span class="error-message" id="phoneError"></span>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Shipping Address -->
+                            <fieldset class="form-group">
+                                <legend>Shipping Address</legend>
+
+                                <div class="form-row form-row-2">
+                                    <div class="form-field">
+                                        <label for="firstName">First Name <span class="required">*</span></label>
+                                        <input 
+                                            type="text" 
+                                            id="firstName" 
+                                            name="firstName" 
+                                            required
+                                            aria-describedby="firstNameError"
+                                        >
+                                        <span class="error-message" id="firstNameError"></span>
+                                    </div>
+
+                                    <div class="form-field">
+                                        <label for="lastName">Last Name <span class="required">*</span></label>
+                                        <input 
+                                            type="text" 
+                                            id="lastName" 
+                                            name="lastName" 
+                                            required
+                                            aria-describedby="lastNameError"
+                                        >
+                                        <span class="error-message" id="lastNameError"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="address">Street Address <span class="required">*</span></label>
+                                        <input 
+                                            type="text" 
+                                            id="address" 
+                                            name="address" 
+                                            required
+                                            placeholder="House number and street name"
+                                            aria-describedby="addressError"
+                                        >
+                                        <span class="error-message" id="addressError"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="apartment">Apartment, suite, etc. (optional)</label>
+                                        <input 
+                                            type="text" 
+                                            id="apartment" 
+                                            name="apartment"
+                                            placeholder="Apartment, suite, unit, etc."
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="form-row form-row-2">
+                                    <div class="form-field">
+                                        <label for="city">City <span class="required">*</span></label>
+                                        <input 
+                                            type="text" 
+                                            id="city" 
+                                            name="city" 
+                                            required
+                                            aria-describedby="cityError"
+                                        >
+                                        <span class="error-message" id="cityError"></span>
+                                    </div>
+
+                                    <div class="form-field">
+                                        <label for="region">Region <span class="required">*</span></label>
+                                        <select id="region" name="region" required aria-describedby="regionError">
+                                            <option value="">Select Region</option>
+                                            <option value="greater-accra">Greater Accra</option>
+                                            <option value="ashanti">Ashanti</option>
+                                            <option value="western">Western</option>
+                                            <option value="central">Central</option>
+                                            <option value="eastern">Eastern</option>
+                                            <option value="volta">Volta</option>
+                                            <option value="northern">Northern</option>
+                                            <option value="upper-east">Upper East</option>
+                                            <option value="upper-west">Upper West</option>
+                                        </select>
+                                        <span class="error-message" id="regionError"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label>
+                                            <input type="checkbox" id="saveAddress" name="saveAddress">
+                                            Save this address for future orders
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Shipping Method -->
+                            <fieldset class="form-group">
+                                <legend>Shipping Method</legend>
+
+                                <div class="shipping-options">
+                                    <label class="shipping-option">
+                                        <input type="radio" name="shipping" value="standard" checked>
+                                        <div class="option-content">
+                                            <span class="option-title">Standard Shipping</span>
+                                            <span class="option-time">3-5 business days</span>
+                                            <span class="option-price">GH₵ 10.00</span>
+                                        </div>
+                                    </label>
+
+                                    <label class="shipping-option">
+                                        <input type="radio" name="shipping" value="express">
+                                        <div class="option-content">
+                                            <span class="option-title">Express Shipping</span>
+                                            <span class="option-time">1-2 business days</span>
+                                            <span class="option-price">GH₵ 25.00</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <button type="button" class="btn btn-primary btn-large" id="continueToPayment">
+                                Continue to Payment
+                            </button>
+                        </section>
+
+                        <!-- Step 2: Payment Information -->
+                        <section class="form-section" id="paymentSection" hidden>
+                            <h2>Payment Information</h2>
+
+                            <!-- Payment Method Selection -->
+                            <fieldset class="form-group">
+                                <legend>Payment Method</legend>
+
+                                <div class="payment-methods-selection">
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="paymentMethod" value="card" checked>
+                                        <span>💳 Credit/Debit Card</span>
+                                    </label>
+
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="paymentMethod" value="mobile-money">
+                                        <span>📱 Mobile Money</span>
+                                    </label>
+
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="paymentMethod" value="bank-transfer">
+                                        <span>🏦 Bank Transfer</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <!-- Card Payment Form -->
+                            <div id="cardPaymentForm">
+                                <fieldset class="form-group">
+                                    <legend>Card Details</legend>
+
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="cardNumber">Card Number <span class="required">*</span></label>
+                                            <input 
+                                                type="text" 
+                                                id="cardNumber" 
+                                                name="cardNumber" 
+                                                placeholder="1234 5678 9012 3456"
+                                                maxlength="19"
+                                                aria-describedby="cardNumberError"
+                                            >
+                                            <span class="error-message" id="cardNumberError"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="cardName">Cardholder Name <span class="required">*</span></label>
+                                            <input 
+                                                type="text" 
+                                                id="cardName" 
+                                                name="cardName"
+                                                placeholder="Name as it appears on card"
+                                                aria-describedby="cardNameError"
+                                            >
+                                            <span class="error-message" id="cardNameError"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row form-row-2">
+                                        <div class="form-field">
+                                            <label for="expiryDate">Expiry Date <span class="required">*</span></label>
+                                            <input 
+                                                type="text" 
+                                                id="expiryDate" 
+                                                name="expiryDate"
+                                                placeholder="MM/YY"
+                                                maxlength="5"
+                                                aria-describedby="expiryDateError"
+                                            >
+                                            <span class="error-message" id="expiryDateError"></span>
+                                        </div>
+
+                                        <div class="form-field">
+                                            <label for="cvv">CVV <span class="required">*</span></label>
+                                            <input 
+                                                type="text" 
+                                                id="cvv" 
+                                                name="cvv"
+                                                placeholder="123"
+                                                maxlength="4"
+                                                aria-describedby="cvvError"
+                                            >
+                                            <span class="error-message" id="cvvError"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <!-- Billing Address -->
+                            <fieldset class="form-group">
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label>
+                                            <input type="checkbox" id="sameAsShipping" name="sameAsShipping" checked>
+                                            Billing address is same as shipping address
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" id="backToShipping">
+                                    Back to Shipping
+                                </button>
+                                <button type="button" class="btn btn-primary btn-large" id="reviewOrder">
+                                    Review Order
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Step 3: Review Order -->
+                        <section class="form-section" id="reviewSection" hidden>
+                            <h2>Review Your Order</h2>
+
+                            <!-- Order Review Details -->
+                            <div class="review-details">
+                                <div class="review-group">
+                                    <h3>Shipping To:</h3>
+                                    <div id="reviewShipping">
+                                        <!-- Shipping details will be populated here -->
+                                    </div>
+                                    <button type="button" class="btn-link" id="editShipping">Edit</button>
+                                </div>
+
+                                <div class="review-group">
+                                    <h3>Payment Method:</h3>
+                                    <div id="reviewPayment">
+                                        <!-- Payment details will be populated here -->
+                                    </div>
+                                    <button type="button" class="btn-link" id="editPayment">Edit</button>
+                                </div>
+
+                                <div class="review-group">
+                                    <h3>Order Items:</h3>
+                                    <div id="reviewItems">
+                                        <!-- Order items will be populated here -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" id="backToPayment">
+                                    Back to Payment
+                                </button>
+                                <button type="submit" class="btn btn-primary btn-large" id="placeOrder">
+                                    Place Order
+                                </button>
+                            </div>
+                        </section>
+                    </form>
+                </section>
+
+                <!-- Order Summary Sidebar -->
+                <aside class="order-summary">
+                    <div class="summary-card">
+                        <h2>Order Summary</h2>
+
+                        <!-- Order Items Preview -->
+                        <div class="summary-items" id="summaryItems">
+                            <!-- Items will be dynamically loaded -->
+                        </div>
+
+                        <!-- Price Breakdown -->
+                        <div class="summary-pricing">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="summarySubtotal">GH₵ 0.00</span>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="summaryShipping">GH₵ 0.00</span>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Tax (12.5%)</span>
+                                <span id="summaryTax">GH₵ 0.00</span>
+                            </div>
+
+                            <div class="summary-divider"></div>
+
+                            <div class="summary-row summary-total">
+                                <span>Total</span>
+                                <span id="summaryTotal">GH₵ 0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <span>🔒</span>
+                                <span>Secure Payment</span>
+                            </div>
+                            <div class="trust-badge">
+                                <span>↩️</span>
+                                <span>30-Day Returns</span>
+                            </div>
+                            <div class="trust-badge">
+                                <span>✓</span>
+                                <span>Money-Back Guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Minimal for Checkout) -->
+    <footer class="site-footer checkout-footer">
+        <div class="container">
+            <div class="footer-minimal">
+                <p>&copy; 2026 Mawu. All rights reserved.</p>
+                <div class="footer-links-minimal">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View product details and add to cart">
+    <title>Product Details - ShopLocal</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Main Header & Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>ShopLocal</h1>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-icon"></span>
+                </button>
+
+                <!-- Main Navigation -->
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Search & Cart -->
+                <div class="header-actions">
+                    <form class="search-form" role="search" aria-label="Search products">
+                        <input 
+                            type="search" 
+                            placeholder="Search products..." 
+                            aria-label="Search"
+                            class="search-input"
+                        >
+                        <button type="submit" class="search-button" aria-label="Submit search">
+                            <span class="search-icon">🔍</span>
+                        </button>
+                    </form>
+
+                    <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="product-detail-page">
+        <div class="container">
+            <!-- Breadcrumb Navigation -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><span id="breadcrumbCategory">Home Decor</span></li>
+                    <li aria-current="page"><span id="breadcrumbProduct">Loading...</span></li>
+                </ol>
+            </nav>
+
+            <!-- Product Detail Container -->
+            <article class="product-detail" id="productDetail">
+                <div class="product-gallery">
+                    <!-- Main Image -->
+                    <div class="gallery-main">
+                        <img 
+                            id="mainImage" 
+                            src="https://via.placeholder.com/600x600/AC866F/FFFFFF?text=Product+Image" 
+                            alt="Product main view"
+                            class="main-image"
+                        >
+                    </div>
+
+                    <!-- Thumbnail Gallery -->
+                    <div class="gallery-thumbnails" id="thumbnails">
+                        <button class="thumbnail active" data-index="0">
+                            <img src="https://via.placeholder.com/100x100/AC866F/FFFFFF?text=1" alt="Product view 1">
+                        </button>
+                        <button class="thumbnail" data-index="1">
+                            <img src="https://via.placeholder.com/100x100/A0D4E0/FFFFFF?text=2" alt="Product view 2">
+                        </button>
+                        <button class="thumbnail" data-index="2">
+                            <img src="https://via.placeholder.com/100x100/AC866F/FFFFFF?text=3" alt="Product view 3">
+                        </button>
+                        <button class="thumbnail" data-index="3">
+                            <img src="https://via.placeholder.com/100x100/A0D4E0/FFFFFF?text=4" alt="Product view 4">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="product-info">
+                    <!-- Product Title & Category -->
+                    <header class="product-header">
+                        <p class="product-category" id="productCategory">Home Decor</p>
+                        <h1 class="product-title" id="productTitle">Handwoven Basket</h1>
+                    </header>
+
+                    <!-- Price -->
+                    <div class="product-price">
+                        <span class="price-current" id="productPrice">GH₵ 45.00</span>
+                    </div>
+
+                    <!-- Rating (Optional) -->
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-count">(24 reviews)</span>
+                    </div>
+
+                    <!-- Stock Status -->
+                    <div class="product-stock" id="stockStatus">
+                        <span class="in-stock">✓ In Stock</span>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="product-description">
+                        <h2>Description</h2>
+                        <p id="productDescription">
+                            Beautiful handwoven basket crafted by local artisans using traditional techniques. 
+                            Perfect for storage or as a decorative piece in any room. Each basket is unique 
+                            and may vary slightly in color and pattern.
+                        </p>
+                    </div>
+
+                    <!-- Product Details -->
+                    <div class="product-details">
+                        <h2>Product Details</h2>
+                        <ul id="productDetailsList">
+                            <li><strong>Material:</strong> Natural woven fiber</li>
+                            <li><strong>Dimensions:</strong> 12" x 10" x 8"</li>
+                            <li><strong>Weight:</strong> 0.8 kg</li>
+                            <li><strong>Care:</strong> Wipe clean with damp cloth</li>
+                            <li><strong>Origin:</strong> Handmade in Ghana</li>
+                        </ul>
+                    </div>
+
+                    <!-- Add to Cart Section -->
+                    <div class="add-to-cart-section">
+                        <!-- Quantity Selector -->
+                        <div class="quantity-selector">
+                            <label for="quantity">Quantity:</label>
+                            <div class="quantity-controls">
+                                <button 
+                                    class="quantity-btn" 
+                                    id="decreaseQty" 
+                                    aria-label="Decrease quantity"
+                                    type="button"
+                                >
+                                    −
+                                </button>
+                                <input 
+                                    type="number" 
+                                    id="quantity" 
+                                    name="quantity" 
+                                    value="1" 
+                                    min="1" 
+                                    max="10"
+                                    aria-label="Product quantity"
+                                >
+                                <button 
+                                    class="quantity-btn" 
+                                    id="increaseQty" 
+                                    aria-label="Increase quantity"
+                                    type="button"
+                                >
+                                    +
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Add to Cart Button -->
+                        <button class="btn btn-primary btn-large btn-block" id="addToCartBtn">
+                            Add to Cart
+                        </button>
+
+                        <!-- Success Message -->
+                        <div class="success-message" id="successMessage" hidden>
+                            <span>✓ Added to cart!</span>
+                        </div>
+                    </div>
+
+                    <!-- Additional Actions -->
+                    <div class="product-actions">
+                        <button class="btn-link" id="wishlistBtn">
+                            <span>♡</span> Add to Wishlist
+                        </button>
+                    </div>
+
+                    <!-- Shipping Info -->
+                    <div class="shipping-info">
+                        <h3>Shipping Information</h3>
+                        <ul>
+                            <li>🚚 Free shipping on orders over GH₵ 100</li>
+                            <li>📦 Standard delivery: 3-5 business days</li>
+                            <li>↩️ 30-day return policy</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Related Products Section -->
+            <section class="related-products" aria-labelledby="related-heading">
+                <h2 id="related-heading">You May Also Like</h2>
+                <div class="product-grid" id="relatedProducts">
+                    <!-- Related products will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <!-- Customer Reviews Section (Optional) -->
+            <section class="reviews-section" aria-labelledby="reviews-heading">
+                <h2 id="reviews-heading">Customer Reviews</h2>
+                
+                <div class="reviews-summary">
+                    <div class="average-rating">
+                        <span class="rating-number">4.8</span>
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="review-count">Based on 24 reviews</span>
+                    </div>
+                </div>
+
+                <div class="reviews-list">
+                    <article class="review-card">
+                        <header class="review-header">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="reviewer-name">Ama K.</span>
+                        </header>
+                        <p class="review-text">
+                            Beautiful basket! The craftsmanship is excellent and it looks perfect in my living room.
+                        </p>
+                        <time class="review-date">2 weeks ago</time>
+                    </article>
+
+                    <article class="review-card">
+                        <header class="review-header">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="reviewer-name">Kwame M.</span>
+                        </header>
+                        <p class="review-text">
+                            High quality product. Delivery was fast and the packaging was secure.
+                        </p>
+                        <time class="review-date">1 month ago</time>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- About -->
+                <div class="footer-section">
+                    <h3>About ShopLocal</h3>
+                    <p>We connect you with talented local artisans, bringing unique handcrafted products to your doorstep.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p>Email: <a href="mailto:hello@shoplocal.com">hello@shoplocal.com</a></p>
+                        <p>Phone: <a href="tel:+233123456789">+233 123 456 789</a></p>
+                        <p>Accra, Ghana</p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kodes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

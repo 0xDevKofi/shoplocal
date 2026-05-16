@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View your shopping cart">
+    <title>Shopping Cart - ShopLocal</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Main Header & Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>ShopLocal</h1>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-icon"></span>
+                </button>
+
+                <!-- Main Navigation -->
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Search & Cart -->
+                <div class="header-actions">
+                    <form class="search-form" role="search" aria-label="Search products">
+                        <input 
+                            type="search" 
+                            placeholder="Search products..." 
+                            aria-label="Search"
+                            class="search-input"
+                        >
+                        <button type="submit" class="search-button" aria-label="Submit search">
+                            <span class="search-icon">🔍</span>
+                        </button>
+                    </form>
+
+                    <a href="cart.html" class="cart-link active" aria-label="Shopping cart">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="cart-page">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1>Shopping Cart</h1>
+            </header>
+
+            <!-- Cart Content -->
+            <div class="cart-layout">
+                <!-- Cart Items Section -->
+                <section class="cart-items" aria-labelledby="cart-items-heading">
+                    <h2 id="cart-items-heading" class="visually-hidden">Cart Items</h2>
+
+                    <!-- Cart Items List -->
+                    <div id="cartItemsList" class="cart-items-list">
+                        <!-- Cart items will be dynamically loaded here -->
+                    </div>
+
+                    <!-- Empty Cart State -->
+                    <div class="empty-cart" id="emptyCart" hidden>
+                        <div class="empty-cart-icon">🛒</div>
+                        <h2>Your cart is empty</h2>
+                        <p>Looks like you haven't added any items to your cart yet.</p>
+                        <a href="products.html" class="btn btn-primary">Start Shopping</a>
+                    </div>
+
+                    <!-- Continue Shopping Link -->
+                    <div class="continue-shopping" id="continueShopping">
+                        <a href="products.html" class="btn-link">← Continue Shopping</a>
+                    </div>
+                </section>
+
+                <!-- Cart Summary Section -->
+                <aside class="cart-summary" id="cartSummary">
+                    <div class="summary-card">
+                        <h2>Order Summary</h2>
+
+                        <!-- Summary Details -->
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="subtotal">GH₵ 0.00</span>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="shipping">GH₵ 0.00</span>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Tax (12.5%)</span>
+                                <span id="tax">GH₵ 0.00</span>
+                            </div>
+
+                            <div class="summary-divider"></div>
+
+                            <div class="summary-row summary-total">
+                                <span>Total</span>
+                                <span id="total">GH₵ 0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Promo Code Section -->
+                        <div class="promo-code-section">
+                            <h3>Have a promo code?</h3>
+                            <form class="promo-form" id="promoForm">
+                                <input 
+                                    type="text" 
+                                    id="promoCode" 
+                                    placeholder="Enter code"
+                                    aria-label="Promo code"
+                                    class="promo-input"
+                                >
+                                <button type="submit" class="btn btn-secondary">Apply</button>
+                            </form>
+                            <div class="promo-message" id="promoMessage" hidden></div>
+                        </div>
+
+                        <!-- Checkout Button -->
+                        <a href="checkout.html" class="btn btn-primary btn-large btn-block" id="checkoutBtn">
+                            Proceed to Checkout
+                        </a>
+
+                        <!-- Payment Methods -->
+                        <div class="payment-methods">
+                            <p>We accept:</p>
+                            <div class="payment-icons">
+                                <span>💳</span>
+                                <span>📱</span>
+                                <span>🏦</span>
+                            </div>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <span>🔒</span>
+                                <span>Secure Checkout</span>
+                            </div>
+                            <div class="trust-badge">
+                                <span>↩️</span>
+                                <span>30-Day Returns</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Free Shipping Banner -->
+            <div class="shipping-banner" id="shippingBanner">
+                <p>🚚 <strong>Free shipping</strong> on orders over GH₵ 100!</p>
+                <div class="shipping-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="shippingProgress" style="width: 0%"></div>
+                    </div>
+                    <p class="progress-text" id="shippingProgressText">
+                        Add GH₵ 100.00 more to qualify for free shipping
+                    </p>
+                </div>
+            </div>
+
+            <!-- You May Also Like Section -->
+            <section class="recommended-products" aria-labelledby="recommended-heading">
+                <h2 id="recommended-heading">You May Also Like</h2>
+                <div class="product-grid" id="recommendedProducts">
+                    <!-- Recommended products will be dynamically loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- About -->
+                <div class="footer-section">
+                    <h3>About ShopLocal</h3>
+                    <p>We connect you with talented local artisans, bringing unique handcrafted products to your doorstep.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p>Email: <a href="mailto:hello@shoplocal.com">hello@shoplocal.com</a></p>
+                        <p>Phone: <a href="tel:+233123456789">+233 123 456 789</a></p>
+                        <p>Accra, Ghana</p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mawu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Item Template (hidden, used by JavaScript) -->
+    <template id="cartItemTemplate">
+        <article class="cart-item">
+            <div class="item-image">
+                <img src="" alt="" class="cart-item-img">
+            </div>
+
+            <div class="item-details">
+                <h3 class="item-name"></h3>
+                <p class="item-category"></p>
+                <p class="item-price"></p>
+            </div>
+
+            <div class="item-quantity">
+                <label class="visually-hidden">Quantity</label>
+                <button class="quantity-btn decrease-btn" aria-label="Decrease quantity">−</button>
+                <input type="number" class="quantity-input" value="1" min="1" max="10" aria-label="Quantity">
+                <button class="quantity-btn increase-btn" aria-label="Increase quantity">+</button>
+            </div>
+
+            <div class="item-total">
+                <p class="item-total-price"></p>
+            </div>
+
+            <button class="item-remove" aria-label="Remove item">
+                <span>×</span>
+            </button>
+        </article>
+    </template>
+
+    <!-- JavaScript -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

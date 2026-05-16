@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our collection of handcrafted artisan products">
+    <title>Products - ShopLocal</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Main Header & Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>ShopLocal</h1>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-icon"></span>
+                </button>
+
+                <!-- Main Navigation -->
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html" class="active">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Search & Cart -->
+                <div class="header-actions">
+                    <form class="search-form" role="search" aria-label="Search products">
+                        <input 
+                            type="search" 
+                            placeholder="Search products..." 
+                            aria-label="Search"
+                            class="search-input"
+                            id="productSearch"
+                        >
+                        <button type="submit" class="search-button" aria-label="Submit search">
+                            <span class="search-icon">🔍</span>
+                        </button>
+                    </form>
+
+                    <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="products-page">
+        <div class="container">
+            <!-- Page Header -->
+            <header class="page-header">
+                <h1>All Products</h1>
+                <p class="page-subtitle">Discover unique handcrafted treasures from local artisans</p>
+            </header>
+
+            <div class="products-layout">
+                <!-- Sidebar Filters -->
+                <aside class="filters-sidebar" aria-label="Product filters">
+                    <!-- Mobile Filter Toggle -->
+                    <!-- <button class="filter-toggle" aria-label="Toggle filters" aria-expanded="false">
+                        <span>Filters</span>
+                        <span class="filter-icon">⚙️</span>
+                    </button> -->
+
+                    <div class="filters-content">
+                        <h2>Filters</h2>
+
+                        <!-- Category Filter -->
+                        <section class="filter-group">
+                            <h3>Category</h3>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="category" value="all" checked>
+                                    <span>All Categories</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="category" value="home-decor">
+                                    <span>Home Decor</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="category" value="textiles">
+                                    <span>Textiles</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="category" value="jewelry">
+                                    <span>Jewelry</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="category" value="pottery">
+                                    <span>Pottery</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="category" value="art">
+                                    <span>Art & Prints</span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Price Filter -->
+                        <section class="filter-group">
+                            <h3>Price Range</h3>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="radio" name="price" value="all" checked>
+                                    <span>All Prices</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="price" value="0-25">
+                                    <span>Under GH₵ 25</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="price" value="25-50">
+                                    <span>GH₵ 25 - GH₵ 50</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="price" value="50-100">
+                                    <span>GH₵ 50 - GH₵ 100</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="radio" name="price" value="100+">
+                                    <span>Over GH₵ 100</span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Availability Filter -->
+                        <section class="filter-group">
+                            <h3>Availability</h3>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="availability" value="in-stock" checked>
+                                    <span>In Stock</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="availability" value="out-of-stock">
+                                    <span>Out of Stock</span>
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Reset Filters Button -->
+                        <button class="btn btn-secondary btn-block" id="resetFilters">
+                            Reset Filters
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Products Area -->
+                <section class="products-area">
+                    <!-- Toolbar -->
+                    <div class="products-toolbar">
+                        <div class="results-count">
+                            <span id="resultsCount">12 products</span>
+                        </div>
+
+                        <div class="sort-controls">
+                            <label for="sortBy">Sort by:</label>
+                            <select id="sortBy" name="sort" class="sort-select">
+                                <option value="featured">Featured</option>
+                                <option value="name-asc">Name (A-Z)</option>
+                                <option value="name-desc">Name (Z-A)</option>
+                                <option value="price-asc">Price (Low to High)</option>
+                                <option value="price-desc">Price (High to Low)</option>
+                                <option value="newest">Newest First</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="product-grid" id="productGrid">
+                        <!-- Products will be dynamically loaded here via JavaScript -->
+                        <noscript>
+                            <p>Please enable JavaScript to view our products.</p>
+                        </noscript>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="loading-state" id="loadingState" hidden>
+                        <p>Loading products...</p>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState" hidden>
+                        <p>No products found matching your criteria.</p>
+                        <button class="btn btn-primary" id="clearFiltersBtn">Clear Filters</button>
+                    </div>
+
+                    <!-- Pagination (Optional) -->
+                    <nav class="pagination" aria-label="Product pages" id="pagination" hidden>
+                        <button class="pagination-btn" aria-label="Previous page" disabled>
+                            ← Previous
+                        </button>
+                        <span class="pagination-info">Page 1 of 1</span>
+                        <button class="pagination-btn" aria-label="Next page" disabled>
+                            Next →
+                        </button>
+                    </nav>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- About -->
+                <div class="footer-section">
+                    <h3>About ShopLocal</h3>
+                    <p>We connect you with talented local artisans, bringing unique handcrafted products to your doorstep.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p>Email: <a href="mailto:hello@shoplocal.com">hello@shoplocal.com</a></p>
+                        <p>Phone: <a href="tel:+233123456789">+233 123 456 789</a></p>
+                        <p>Accra, Ghana</p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mawu. All rights reserved. </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
