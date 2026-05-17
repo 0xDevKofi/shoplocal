@@ -1,6 +1,10 @@
 /* ========== COMPONENTS - COMPACT VERSION ========== */
 /* All padding reduced to match footer's compact aesthetic */
 
+.header-search-bar{
+    margin-top: 9.5px;
+}
+
 /* ========== BUTTONS ========== */
 
 .btn {
@@ -508,9 +512,7 @@ textarea {
     transform: translateY(-50%);
 }
 
-.header-search-bar{
-    margin-top: 10px;
-}
+
 
 /* ========== AUTH LINKS ========== */
 
