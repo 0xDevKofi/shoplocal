@@ -12,6 +12,13 @@
     max-width: var(--container-xl);
 }
 
+.main-nav{
+   align-items: center;
+    justify-content: center;
+    padding: var(--space-md) var(--space-lg);
+    background-color: var(--color-surface);
+}
+
 @media (min-width: 640px) {
     .hero {
         padding: var(--space-2xl) var(--space-lg);
@@ -669,10 +676,8 @@
         display: none;
     }
 }
-    height: 80px;
-    object-fit: cover;
-    border-radius: var(--radius-sm);
-}
+
+
 
 
 
