@@ -594,6 +594,11 @@
         display: none;
         
     }
+
+    .hamburger-icon{
+        visibility: hidden;
+        pointer-events: none;
+    }
 }
 
 .item-image img {
