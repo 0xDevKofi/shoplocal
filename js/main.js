@@ -257,7 +257,7 @@ function setupFilters() {
                 priceFilters.forEach(f => f.checked = f.value === 'all');
                 if (inStockFilter) inStockFilter.checked = true;
                 
-                const searchInput = document.getElementById('productSearch');
+                const searchInput = document.getElementById('globalSearch') || document.getElementById('productSearch');
                 if (searchInput) searchInput.value = '';
                 
                 const sortSelect = document.getElementById('sortBy');
@@ -292,15 +292,37 @@ function setupSort() {
 }
 
 function setupSearch() {
-    const searchInput = document.getElementById('productSearch');
+    // Use the sub-header globalSearch; fall back to old productSearch id if present
+    const searchInput = document.getElementById('globalSearch') || document.getElementById('productSearch');
+    const searchForm  = document.getElementById('globalSearchForm');
+
     if (searchInput) {
         const debouncedSearch = debounce((value) => {
             currentFilters.searchQuery = value;
             loadProducts();
         }, 300);
-        
+
         searchInput.addEventListener('input', function() {
             debouncedSearch(this.value);
+        });
+
+        // Pre-fill + run search if arriving via ?search= URL param
+        const urlParams = new URLSearchParams(window.location.search);
+        const q = urlParams.get('search');
+        if (q) {
+            searchInput.value = q;
+            currentFilters.searchQuery = q;
+        }
+    }
+
+    // Prevent globalSearchForm from navigating away on the products page
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (searchInput) {
+                currentFilters.searchQuery = searchInput.value;
+                loadProducts();
+            }
         });
     }
 }
@@ -960,10 +982,99 @@ document.head.appendChild(style);
 // INITIALIZE ON DOM LOAD
 // ==========================================================================
 
+// ==========================================================================
+// PROFILE DROPDOWN (runs on every page)
+// ==========================================================================
+
+function initProfileDropdown() {
+    const drop = document.getElementById('profileDropdown');
+    const btn  = document.getElementById('profileBtn');
+    const menu = document.getElementById('profileMenu');
+    if (!drop || !btn || !menu) return;
+
+    // Build menu content based on auth state
+    function buildMenu() {
+        const user = (typeof getCurrentUser === 'function') ? getCurrentUser() : null;
+        if (user) {
+            const initial = (user.firstName || user.email || '?').charAt(0).toUpperCase();
+            btn.innerHTML = '<span class="profile-avatar">' + initial + '</span><span class="profile-chevron">▾</span>';
+            menu.innerHTML =
+                '<div class="profile-menu-header"><strong>' + (user.firstName || '') + ' ' + (user.lastName || '') + '</strong><span>' + user.email + '</span></div>' +
+                '<div class="profile-menu-divider"></div>' +
+                '<a class="profile-menu-item" href="profile.html"><span>👤</span> My Profile</a>' +
+                '<a class="profile-menu-item" href="orders.html"><span>📦</span> My Orders</a>' +
+                '<a class="profile-menu-item" href="wishlist.html"><span>♡</span> Wishlist</a>' +
+                '<div class="profile-menu-divider"></div>' +
+                '<button class="profile-menu-item profile-menu-logout" id="profileDropdownLogout"><span>🚪</span> Sign Out</button>';
+            const logoutBtn = document.getElementById('profileDropdownLogout');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    closeDropdown();
+                    if (confirm('Sign out of ShopLocal?')) {
+                        localStorage.removeItem('shoplocal_user');
+                        window.location.href = 'index.html';
+                    }
+                });
+            }
+        } else {
+            const path     = window.location.pathname;
+            const isLogin  = path.includes('login.html');
+            const isSignup = path.includes('signup.html');
+            btn.innerHTML = '<svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="profile-chevron">▾</span>';
+            menu.innerHTML =
+                '<div class="profile-menu-guest"><p>Welcome to ShopLocal</p></div>' +
+                '<div class="profile-menu-divider"></div>' +
+                '<a class="profile-menu-item profile-menu-item--primary' + (isLogin ? ' active' : '') + '" href="login.html"><span>🔑</span> Sign In</a>' +
+                '<a class="profile-menu-item' + (isSignup ? ' active' : '') + '" href="signup.html"><span>✨</span> Create Account</a>';
+        }
+    }
+
+    function openDropdown()  { drop.classList.add('open');    btn.setAttribute('aria-expanded', 'true'); }
+    function closeDropdown() { drop.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+
+    buildMenu();
+
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        drop.classList.contains('open') ? closeDropdown() : openDropdown();
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!drop.contains(e.target)) closeDropdown();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeDropdown();
+    });
+}
+
+// ==========================================================================
+// GLOBAL SEARCH (redirect to products page)
+// ==========================================================================
+
+function initGlobalSearch() {
+    const form = document.getElementById('globalSearchForm');
+    if (!form) return;
+    const path = window.location.pathname.split('/').pop() || 'index.html';
+    if (path === 'products.html') return; // products.js handles it there
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const q = document.getElementById('globalSearch').value.trim();
+        if (q) window.location.href = 'products.html?search=' + encodeURIComponent(q);
+    });
+}
+
+// ==========================================================================
+// INITIALIZE ON DOM LOAD
+// ==========================================================================
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize common components
     initMobileMenu();
     updateCartCount();
+    initProfileDropdown();
+    initGlobalSearch();
 
     // Sync auth state on every page (requires auth.js loaded before main.js)
     if (typeof initAuth === 'function')     initAuth();

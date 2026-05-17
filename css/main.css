@@ -45,25 +45,11 @@
     .hero h2 {
         font-size: var(--font-size-3xl);
     }
-
-    .hamburger-icon {
-        visibility: hidden;
-        pointer-events: none;
-        
-        
-    }
-
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-    .hamburger-icon {
-        visibility: hidden;
-        pointer-events: none;
-    }
-
     .filters-sidebar {
         display: none;
-        
     }
 }
 
@@ -623,22 +609,6 @@
 
     .filters-sidebar {
         display: none;
-        
-    }
-
-    .hamburger-icon{
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-    .cart-icon{
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-    .cart-count{
-        visibility: hidden;
-        pointer-events: none;
     }
 
     .category-grid{
@@ -686,9 +656,6 @@
         display: none;
     }
 }
-
-.item-image img {
-    width: 80px;
     height: 80px;
     object-fit: cover;
     border-radius: var(--radius-sm);
@@ -745,14 +712,6 @@
 .item-remove:hover {
     background-color: var(--color-error);
     color: white;
-}
-
-.hamburger-icon {
-    position: absolute;
-    right: 100px;
-    display: flex;
-    flex-direction: column;
-    
 }
 
 
@@ -1637,5 +1596,5 @@ fieldset legend {
 
 /* about page  */
 .about-hero-content{
-    margin-top: 100px;
+    margin-top: var(--space-xl);
 }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="My Orders - ShopLocal">
-    <title>My Orders - ShopLocal</title>
+    <meta name="description" content="Create your ShopLocal account">
+    <title>Sign Up - ShopLocal</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -12,125 +12,288 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-
+    <!-- Main Header & Navigation -->
+        <!-- Main Header & Navigation -->
     <header class="site-header">
         <div class="container">
             <div class="header-content">
+                <!-- Logo -->
                 <div class="logo">
-                    <a href="index.html"><h1>ShopLocal</h1></a>
+                    <a href="index.html">
+                        <h1>ShopLocal</h1>
+                    </a>
                 </div>
-                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span class="hamburger-icon"></span>
-                </button>
+                <!-- Main Navigation -->
                 <nav class="main-nav" aria-label="Main navigation">
                     <ul class="nav-list">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html" id="nav-home">Home</a></li>
+                        <li><a href="products.html" id="nav-products">Products</a></li>
+                        <li><a href="about.html" id="nav-about">About</a></li>
+                        <li><a href="contact.html" id="nav-contact">Contact</a></li>
                     </ul>
                 </nav>
+                <!-- Search & Cart -->
                 <div class="header-actions">
-                    <form class="search-form" role="search" aria-label="Search products">
-                        <input type="search" placeholder="Search products..." aria-label="Search" class="search-input">
-                        <button type="submit" class="search-button" aria-label="Submit search">
-                            <span class="search-icon">🔍</span>
-                        </button>
-                    </form>
                     <a href="cart.html" class="cart-link" aria-label="Shopping cart">
                         <span class="cart-icon">🛒</span>
                         <span class="cart-count" id="cartCount">0</span>
                     </a>
-                    <div class="auth-links"></div>
+                    <!-- Profile Dropdown -->
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <button class="profile-btn" id="profileBtn" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                            <svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                            </svg>
+                            <span class="profile-chevron">▾</span>
+                        </button>
+                        <div class="profile-menu" id="profileMenu" role="menu">
+                            <!-- Populated by main.js initProfileDropdown() -->
+                        </div>
+                    </div>
+                    <!-- Mobile Menu Toggle (must be last for correct tab/flex order) -->
+                    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span class="hamburger-icon"></span>
+                    </button>
                 </div>
             </div>
         </div>
     </header>
-
-    <main class="account-page">
+    <!-- Search Bar (below header, all screen sizes) -->
+    <div class="header-search-bar" role="search">
         <div class="container">
-            <div class="account-layout">
+            <form class="search-form" aria-label="Search products" id="globalSearchForm">
+                <input type="search" placeholder="Search products..." aria-label="Search" class="search-input" id="globalSearch">
+                <button type="submit" class="search-button" aria-label="Submit search">
+                    <span class="search-icon">🔍</span>
+                </button>
+            </form>
+        </div>
+    </div>
 
-                <!-- Sidebar -->
-                <aside class="account-sidebar">
-                    <div class="account-sidebar-header">
-                        <div class="account-avatar" id="sidebarAvatar">?</div>
-                        <div>
-                            <div class="account-sidebar-name" id="sidebarName">Loading…</div>
-                            <div class="account-sidebar-email" id="sidebarEmail"></div>
+    <!-- Main Content -->
+    <main class="auth-page">
+        <div class="container">
+            <div class="auth-container">
+                <!-- Sign Up Form Card -->
+                <div class="auth-card">
+                    <header class="auth-header">
+                        <h1>Create Account</h1>
+                        <p>Join ShopLocal and start shopping</p>
+                    </header>
+
+                    <form class="auth-form" id="signupForm" novalidate>
+                        <!-- Name Fields -->
+                        <div class="form-row form-row-2">
+                            <div class="form-field">
+                                <label for="firstName">First Name <span class="required">*</span></label>
+                                <input 
+                                    type="text" 
+                                    id="firstName" 
+                                    name="firstName" 
+                                    required
+                                    placeholder="John"
+                                    aria-describedby="firstNameError"
+                                >
+                                <span class="error-message" id="firstNameError"></span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="lastName">Last Name <span class="required">*</span></label>
+                                <input 
+                                    type="text" 
+                                    id="lastName" 
+                                    name="lastName" 
+                                    required
+                                    placeholder="Doe"
+                                    aria-describedby="lastNameError"
+                                >
+                                <span class="error-message" id="lastNameError"></span>
+                            </div>
                         </div>
-                    </div>
-                    <nav class="account-nav" aria-label="Account navigation">
-                        <a href="profile.html"  class="account-nav-link"><span class="nav-icon">👤</span> My Profile</a>
-                        <a href="orders.html"   class="account-nav-link active"><span class="nav-icon">📦</span> My Orders</a>
-                        <a href="wishlist.html" class="account-nav-link"><span class="nav-icon">♡</span> Wishlist</a>
-                        <div class="account-nav-divider"></div>
-                        <a href="index.html"    class="account-nav-link"><span class="nav-icon">🏠</span> Back to Shop</a>
-                        <button class="account-nav-link account-nav-logout" id="sidebarLogoutBtn"><span class="nav-icon">🚪</span> Logout</button>
-                    </nav>
-                </aside>
 
-                <!-- Main Content -->
-                <div class="account-content">
-                    <div class="account-content-header">
-                        <h1>My Orders</h1>
-                        <p>Track and review your purchase history</p>
-                    </div>
-
-                    <!-- Filter bar -->
-                    <div class="orders-toolbar">
-                        <div class="orders-filter-group">
-                            <label for="orderStatusFilter">Status:</label>
-                            <select id="orderStatusFilter" class="sort-select">
-                                <option value="all">All Orders</option>
-                                <option value="processing">Processing</option>
-                                <option value="shipped">Shipped</option>
-                                <option value="delivered">Delivered</option>
-                                <option value="cancelled">Cancelled</option>
-                            </select>
+                        <!-- Email Field -->
+                        <div class="form-field">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required
+                                placeholder="your.email@example.com"
+                                aria-describedby="emailError"
+                            >
+                            <span class="error-message" id="emailError"></span>
                         </div>
-                        <span class="orders-count" id="ordersCount"></span>
-                    </div>
 
-                    <!-- Orders list -->
-                    <div id="ordersList"></div>
+                        <!-- Phone Field -->
+                        <div class="form-field">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                required
+                                placeholder="+233 XX XXX XXXX"
+                                aria-describedby="phoneError"
+                            >
+                            <span class="error-message" id="phoneError"></span>
+                        </div>
 
-                    <!-- Empty state -->
-                    <div class="orders-empty" id="ordersEmpty" hidden>
-                        <div class="orders-empty-icon">📦</div>
-                        <h2>No orders yet</h2>
-                        <p>When you place an order it will appear here.</p>
-                        <a href="products.html" class="btn btn-primary">Start Shopping</a>
+                        <!-- Password Field -->
+                        <div class="form-field">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <div class="password-field">
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    required
+                                    placeholder="At least 8 characters"
+                                    aria-describedby="passwordError"
+                                    minlength="8"
+                                >
+                                <button type="button" class="toggle-password" aria-label="Show password">
+                                    <span class="eye-icon">👁️</span>
+                                </button>
+                            </div>
+                            <span class="error-message" id="passwordError"></span>
+                            <span class="field-hint">Must be at least 8 characters with 1 uppercase, 1 lowercase, and 1 number</span>
+                        </div>
+
+                        <!-- Confirm Password Field -->
+                        <div class="form-field">
+                            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                            <div class="password-field">
+                                <input 
+                                    type="password" 
+                                    id="confirmPassword" 
+                                    name="confirmPassword" 
+                                    required
+                                    placeholder="Re-enter your password"
+                                    aria-describedby="confirmPasswordError"
+                                >
+                                <button type="button" class="toggle-password" aria-label="Show password">
+                                    <span class="eye-icon">👁️</span>
+                                </button>
+                            </div>
+                            <span class="error-message" id="confirmPasswordError"></span>
+                        </div>
+
+                        <!-- Terms & Conditions -->
+                        <div class="form-field">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span>I agree to the <a href="#terms" class="link">Terms & Conditions</a> and <a href="#privacy" class="link">Privacy Policy</a></span>
+                            </label>
+                            <span class="error-message" id="termsError"></span>
+                        </div>
+
+                        <!-- Newsletter Subscription -->
+                        <div class="form-field">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span>Send me news, offers, and artisan stories</span>
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-large btn-block">
+                            Create Account
+                        </button>
+
+                        <!-- Divider -->
+                        <div class="auth-divider">
+                            <span>or</span>
+                        </div>
+
+                        <!-- Social Sign Up Options -->
+                        <div class="social-auth">
+                            <button type="button" class="btn-social btn-google">
+                                <span class="social-icon">🔵</span>
+                                <span>Sign up with Google</span>
+                            </button>
+                            <button type="button" class="btn-social btn-facebook">
+                                <span class="social-icon">🔵</span>
+                                <span>Sign up with Facebook</span>
+                            </button>
+                        </div>
+
+                        <!-- Login Link -->
+                        <div class="auth-footer">
+                            <p>Already have an account? <a href="login.html" class="auth-link-text">Login</a></p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Side Info -->
+                <div class="auth-info">
+                    <div class="auth-info-content">
+                        <div class="auth-info-icon">✨</div>
+                        <h2>Join Our Community</h2>
+                        <p>Become part of a community that celebrates craftsmanship and supports local artisans.</p>
+                        
+                        <div class="auth-benefits">
+                            <div class="benefit-item">
+                                <span class="benefit-icon">🎁</span>
+                                <span>Welcome discount on first order</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="benefit-icon">🚚</span>
+                                <span>Free shipping on orders over GH₵ 100</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="benefit-icon">⭐</span>
+                                <span>Exclusive access to new products</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="benefit-icon">💝</span>
+                                <span>Birthday surprises and rewards</span>
+                            </div>
+                        </div>
+
+                        <div class="trust-indicators">
+                            <p class="trust-text">🔒 Your data is secure and protected</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
+                <!-- About -->
                 <div class="footer-section">
                     <h3>About ShopLocal</h3>
                     <p>We connect you with talented local artisans, bringing unique handcrafted products to your doorstep.</p>
                 </div>
+
+                <!-- Quick Links -->
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="products.html">All Products</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
+
+                <!-- Customer Service -->
                 <div class="footer-section">
                     <h3>Customer Service</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
                     </ul>
                 </div>
+
+                <!-- Contact -->
                 <div class="footer-section">
                     <h3>Contact Us</h3>
                     <address>
@@ -140,126 +303,17 @@
                     </address>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 Mawu. All rights reserved.</p>
+                <p>&copy; 2026 ShopLocal. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="js/products.js"></script>
-    <script src="js/auth.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const user = getCurrentUser();
-        if (!user) { window.location.href = 'login.html'; return; }
-
-        document.getElementById('sidebarAvatar').textContent = user.firstName.charAt(0).toUpperCase();
-        document.getElementById('sidebarName').textContent   = user.firstName + ' ' + user.lastName;
-        document.getElementById('sidebarEmail').textContent  = user.email;
-
-        document.getElementById('sidebarLogoutBtn').addEventListener('click', function () {
-            showLogoutConfirm(this);
-        });
-
-        // Load orders from localStorage (keyed per user)
-        const storageKey = 'shoplocal_orders_' + user.id;
-        let orders = [];
-        try { orders = JSON.parse(localStorage.getItem(storageKey) || '[]'); } catch (e) {}
-
-        // Seed demo orders if none exist so the page isn't blank on first visit
-        if (orders.length === 0) {
-            orders = [
-                {
-                    id: 'SL-10041',
-                    date: '2026-04-28',
-                    status: 'delivered',
-                    total: 110.00,
-                    items: [
-                        { name: 'Handwoven Basket',    qty: 1, price: 45.00 },
-                        { name: 'Beaded Necklace',     qty: 1, price: 35.00 },
-                        { name: 'Adinkra Print Cushion', qty: 1, price: 28.00 },
-                    ]
-                },
-                {
-                    id: 'SL-10038',
-                    date: '2026-04-10',
-                    status: 'shipped',
-                    total: 65.00,
-                    items: [
-                        { name: 'Kente Cloth Scarf', qty: 1, price: 65.00 },
-                    ]
-                },
-                {
-                    id: 'SL-10021',
-                    date: '2026-03-15',
-                    status: 'delivered',
-                    total: 95.00,
-                    items: [
-                        { name: 'Wooden Sculpture', qty: 1, price: 95.00 },
-                    ]
-                }
-            ];
-            localStorage.setItem(storageKey, JSON.stringify(orders));
-        }
-
-        const statusBadge = {
-            processing: { label: 'Processing', cls: 'badge-warning' },
-            shipped:    { label: 'Shipped',     cls: 'badge-info'    },
-            delivered:  { label: 'Delivered',   cls: 'badge-success' },
-            cancelled:  { label: 'Cancelled',   cls: 'badge-error'   },
-        };
-
-        function renderOrders(filter) {
-            const list  = document.getElementById('ordersList');
-            const empty = document.getElementById('ordersEmpty');
-            const count = document.getElementById('ordersCount');
-
-            const filtered = filter === 'all' ? orders : orders.filter(o => o.status === filter);
-            count.textContent = filtered.length + ' order' + (filtered.length !== 1 ? 's' : '');
-
-            if (filtered.length === 0) {
-                list.innerHTML = '';
-                empty.hidden = false;
-                return;
-            }
-            empty.hidden = true;
-
-            list.innerHTML = filtered.map(order => {
-                const badge = statusBadge[order.status] || { label: order.status, cls: '' };
-                const itemLines = order.items.map(i =>
-                    `<li>${i.name} <span class="order-item-qty">× ${i.qty}</span> <span class="order-item-price">GH₵ ${i.price.toFixed(2)}</span></li>`
-                ).join('');
-                return `
-                <article class="order-card">
-                    <div class="order-card-header">
-                        <div>
-                            <span class="order-id">Order #${order.id}</span>
-                            <span class="order-date">${new Date(order.date).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}</span>
-                        </div>
-                        <span class="badge ${badge.cls}">${badge.label}</span>
-                    </div>
-                    <ul class="order-items-list">${itemLines}</ul>
-                    <div class="order-card-footer">
-                        <span class="order-total">Total: <strong>GH₵ ${order.total.toFixed(2)}</strong></span>
-                        <div class="order-actions">
-                            ${order.status === 'delivered'
-                                ? `<button class="btn btn-secondary btn-sm" onclick="alert('Re-order feature coming soon!')">Re-order</button>`
-                                : ''}
-                            <button class="btn btn-secondary btn-sm" onclick="alert('Order tracking coming soon!')">Track Order</button>
-                        </div>
-                    </div>
-                </article>`;
-            }).join('');
-        }
-
-        renderOrders('all');
-
-        document.getElementById('orderStatusFilter').addEventListener('change', function () {
-            renderOrders(this.value);
-        });
-    });
-    </script>
 </body>
 </html>

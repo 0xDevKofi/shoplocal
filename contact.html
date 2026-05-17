@@ -10,38 +10,55 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+        body { padding-top: 50px; }
+        @media (min-width: 768px) { body { padding-top: 60px; } }
+    </style>
 </head>
 <body>
 
+        <!-- Main Header & Navigation -->
     <header class="site-header">
         <div class="container">
             <div class="header-content">
+                <!-- Logo -->
                 <div class="logo">
-                    <a href="index.html"><h1>ShopLocal</h1></a>
+                    <a href="index.html">
+                        <h1>ShopLocal</h1>
+                    </a>
                 </div>
-                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span class="hamburger-icon"></span>
-                </button>
+                <!-- Main Navigation -->
                 <nav class="main-nav" aria-label="Main navigation">
                     <ul class="nav-list">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html" class="active">Contact</a></li>
+                        <li><a href="index.html" id="nav-home">Home</a></li>
+                        <li><a href="products.html" id="nav-products">Products</a></li>
+                        <li><a href="about.html" id="nav-about">About</a></li>
+                        <li><a href="contact.html" id="nav-contact" class="active">Contact</a></li>
                     </ul>
                 </nav>
+                <!-- Search & Cart -->
                 <div class="header-actions">
-                    <form class="search-form" role="search" aria-label="Search products">
-                        <input type="search" placeholder="Search products..." aria-label="Search" class="search-input">
-                        <button type="submit" class="search-button" aria-label="Submit search">
-                            <span class="search-icon">🔍</span>
-                        </button>
-                    </form>
                     <a href="cart.html" class="cart-link" aria-label="Shopping cart">
                         <span class="cart-icon">🛒</span>
                         <span class="cart-count" id="cartCount">0</span>
                     </a>
-                    <div class="auth-links"></div>
+                    <!-- Profile Dropdown -->
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <button class="profile-btn" id="profileBtn" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                            <svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                            </svg>
+                            <span class="profile-chevron">▾</span>
+                        </button>
+                        <div class="profile-menu" id="profileMenu" role="menu">
+                            <!-- Populated by main.js initProfileDropdown() -->
+                        </div>
+                    </div>
+                    <!-- Mobile Menu Toggle (must be last for correct tab/flex order) -->
+                    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span class="hamburger-icon"></span>
+                    </button>
                 </div>
             </div>
         </div>
