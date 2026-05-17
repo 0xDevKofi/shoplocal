@@ -140,6 +140,124 @@ p {
     color: var(--color-primary-dark);
 }
 
+/* sign up& login */
+/* ========== SITE HEADER ACTIONS & AUTH LINKS ========== */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+/* Auth link basic state styled as buttons */
+.auth-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Design style differentiation for standard state */
+.auth-links .auth-link[href="login.html"] {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.auth-links .auth-link[href="login.html"]:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+}
+
+.auth-links .auth-link[href="signup.html"] {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.auth-links .auth-link[href="signup.html"]:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+/* User Menu Profile Dropdown style from auth.js */
+.user-menu {
+    position: relative;
+}
+
+.user-menu-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: none;
+    border: 1px solid var(--color-border);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-weight: var(--font-weight-medium);
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + var(--space-xs));
+    right: 0;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    width: 200px;
+    z-index: var(--z-index-dropdown);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    /* Collapsed by default */
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+    pointer-events: none;
+    transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.user-dropdown.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.dropdown-item {
+    padding: var(--space-sm) var(--space-md);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    text-align: left;
+    transition: background-color var(--transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-background);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--color-border-light);
+}
+
 /* ========== CARDS ========== */
 
 .card {
@@ -405,7 +523,7 @@ input[type="radio"] {
     height: 20px;
     margin-right: var(--space-sm);
     cursor: pointer;
-    accent-color: var(--color-primary);
+    accent-color: #000000;
 }
 
 /* ========== SEARCH BAR ========== */
@@ -606,4 +724,72 @@ input[type="radio"] {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+/* ── Logout inline confirmation popover ── */
+
+.logout-confirm {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-md);
+    width: 200px;
+
+    /* Animate in from slightly above */
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.logout-confirm.logout-confirm-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.logout-confirm-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+    margin: 0 0 var(--space-sm) 0;
+    white-space: nowrap;
+}
+
+.logout-confirm-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.logout-confirm-cancel,
+.logout-confirm-ok {
+    flex: 1;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.logout-confirm-cancel {
+    background-color: var(--color-background);
+    border-color: var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+.logout-confirm-cancel:hover {
+    background-color: var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.logout-confirm-ok {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.logout-confirm-ok:hover {
+    background-color: #222;
+    border-color: #222;
 }

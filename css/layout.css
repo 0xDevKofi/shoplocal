@@ -360,6 +360,7 @@ section {
 
 .page-header {
     text-align: center;
+    margin-top: 70px;
     margin-bottom: var(--space-2xl);
     padding-top: var(--space-xl);
 }

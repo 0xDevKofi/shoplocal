@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact ShopLocal - We'd love to hear from you">
+    <title>Contact Us - ShopLocal</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html"><h1>ShopLocal</h1></a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-icon"></span>
+                </button>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <form class="search-form" role="search" aria-label="Search products">
+                        <input type="search" placeholder="Search products..." aria-label="Search" class="search-input">
+                        <button type="submit" class="search-button" aria-label="Submit search">
+                            <span class="search-icon">🔍</span>
+                        </button>
+                    </form>
+                    <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    <div class="auth-links"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="container text-center">
+                <h1>Get in Touch</h1>
+                <p class="contact-hero-sub">Questions about an order, a product, or becoming an artisan partner? We reply within one business day.</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container contact-layout">
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrap">
+                    <h2>Send a Message</h2>
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-row form-row-2">
+                            <div class="form-field">
+                                <label for="contactFirstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="contactFirstName" name="firstName" required placeholder="Kwame">
+                                <span class="error-message" id="contactFirstNameError"></span>
+                            </div>
+                            <div class="form-field">
+                                <label for="contactLastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="contactLastName" name="lastName" required placeholder="Mensah">
+                                <span class="error-message" id="contactLastNameError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="contactEmail">Email Address <span class="required">*</span></label>
+                            <input type="email" id="contactEmail" name="email" required placeholder="your.email@example.com">
+                            <span class="error-message" id="contactEmailError"></span>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="contactSubject">Subject <span class="required">*</span></label>
+                            <select id="contactSubject" name="subject" required>
+                                <option value="" disabled selected>Select a topic…</option>
+                                <option value="order">Order enquiry</option>
+                                <option value="product">Product question</option>
+                                <option value="artisan">Becoming an artisan partner</option>
+                                <option value="return">Return or refund</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="error-message" id="contactSubjectError"></span>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="contactMessage">Message <span class="required">*</span></label>
+                            <textarea id="contactMessage" name="message" required placeholder="Tell us how we can help…" rows="5"></textarea>
+                            <span class="error-message" id="contactMessageError"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+
+                        <div class="contact-success" id="contactSuccess" hidden>
+                            <span>✓</span> Thanks! We'll get back to you within one business day.
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <aside class="contact-info">
+                    <h2>Other Ways to Reach Us</h2>
+
+                    <div class="contact-info-list">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">📧</div>
+                            <div>
+                                <p class="contact-info-label">Email</p>
+                                <a href="mailto:hello@shoplocal.com">hello@shoplocal.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">📞</div>
+                            <div>
+                                <p class="contact-info-label">Phone</p>
+                                <a href="tel:+233123456789">+233 123 456 789</a>
+                                <p class="contact-info-note">Mon–Fri, 9 am – 5 pm GMT</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">📍</div>
+                            <div>
+                                <p class="contact-info-label">Office</p>
+                                <address>
+                                    14 Cantonments Road<br>
+                                    Accra, Ghana
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-faq">
+                        <h3>Common Questions</h3>
+                        <details class="faq-item">
+                            <summary>How long does delivery take?</summary>
+                            <p>Standard delivery within Ghana is 3–5 business days. International orders take 7–14 business days.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Can I return a product?</summary>
+                            <p>Yes. We offer a 30-day return policy on all items in original condition. Contact us to start a return.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>How do I become an artisan partner?</summary>
+                            <p>Select "Becoming an artisan partner" in the form and tell us about your craft. Our team will reach out within 3 business days.</p>
+                        </details>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About ShopLocal</h3>
+                    <p>We connect you with talented local artisans, bringing unique handcrafted products to your doorstep.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p>Email: <a href="mailto:hello@shoplocal.com">hello@shoplocal.com</a></p>
+                        <p>Phone: <a href="tel:+233123456789">+233 123 456 789</a></p>
+                        <p>Accra, Ghana</p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mawu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contactForm');
+        const success = document.getElementById('contactSuccess');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let valid = true;
+
+            const fields = [
+                { id: 'contactFirstName',  errId: 'contactFirstNameError',  msg: 'First name is required' },
+                { id: 'contactLastName',   errId: 'contactLastNameError',   msg: 'Last name is required' },
+                { id: 'contactEmail',      errId: 'contactEmailError',      msg: 'A valid email is required', isEmail: true },
+                { id: 'contactSubject',    errId: 'contactSubjectError',    msg: 'Please select a topic' },
+                { id: 'contactMessage',    errId: 'contactMessageError',    msg: 'Please enter a message' },
+            ];
+
+            fields.forEach(f => {
+                const el  = document.getElementById(f.id);
+                const err = document.getElementById(f.errId);
+                const val = el.value.trim();
+                const bad = !val || (f.isEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
+                err.textContent = bad ? f.msg : '';
+                err.classList.toggle('active', bad);
+                el.classList.toggle('invalid', bad);
+                if (bad) valid = false;
+            });
+
+            if (!valid) return;
+
+            // In production this would POST to a backend / email service
+            form.reset();
+            success.hidden = false;
+            setTimeout(() => { success.hidden = true; }, 6000);
+        });
+    });
+    </script>
+</body>
+</html>

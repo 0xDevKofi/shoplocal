@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Wishlist - ShopLocal">
+    <title>Wishlist - ShopLocal</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html"><h1>ShopLocal</h1></a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-icon"></span>
+                </button>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <form class="search-form" role="search" aria-label="Search products">
+                        <input type="search" placeholder="Search products..." aria-label="Search" class="search-input">
+                        <button type="submit" class="search-button" aria-label="Submit search">
+                            <span class="search-icon">🔍</span>
+                        </button>
+                    </form>
+                    <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    <div class="auth-links"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="account-page">
+        <div class="container">
+            <div class="account-layout">
+
+                <!-- Sidebar -->
+                <aside class="account-sidebar">
+                    <div class="account-sidebar-header">
+                        <div class="account-avatar" id="sidebarAvatar">?</div>
+                        <div>
+                            <div class="account-sidebar-name" id="sidebarName">Loading…</div>
+                            <div class="account-sidebar-email" id="sidebarEmail"></div>
+                        </div>
+                    </div>
+                    <nav class="account-nav" aria-label="Account navigation">
+                        <a href="profile.html"  class="account-nav-link"><span class="nav-icon">👤</span> My Profile</a>
+                        <a href="orders.html"   class="account-nav-link"><span class="nav-icon">📦</span> My Orders</a>
+                        <a href="wishlist.html" class="account-nav-link active"><span class="nav-icon">♡</span> Wishlist</a>
+                        <div class="account-nav-divider"></div>
+                        <a href="index.html"    class="account-nav-link"><span class="nav-icon">🏠</span> Back to Shop</a>
+                        <button class="account-nav-link account-nav-logout" id="sidebarLogoutBtn"><span class="nav-icon">🚪</span> Logout</button>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="account-content">
+                    <div class="account-content-header">
+                        <h1>My Wishlist</h1>
+                        <p>Items you've saved for later</p>
+                    </div>
+
+                    <div class="product-grid" id="wishlistGrid"></div>
+
+                    <div class="wishlist-empty" id="wishlistEmpty" hidden>
+                        <div class="orders-empty-icon">♡</div>
+                        <h2>Your wishlist is empty</h2>
+                        <p>Hit the ♡ button on any product to save it here.</p>
+                        <a href="products.html" class="btn btn-primary">Browse Products</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About ShopLocal</h3>
+                    <p>We connect you with talented local artisans, bringing unique handcrafted products to your doorstep.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p>Email: <a href="mailto:hello@shoplocal.com">hello@shoplocal.com</a></p>
+                        <p>Phone: <a href="tel:+233123456789">+233 123 456 789</a></p>
+                        <p>Accra, Ghana</p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mawu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const user = getCurrentUser();
+        if (!user) { window.location.href = 'login.html'; return; }
+
+        document.getElementById('sidebarAvatar').textContent = user.firstName.charAt(0).toUpperCase();
+        document.getElementById('sidebarName').textContent   = user.firstName + ' ' + user.lastName;
+        document.getElementById('sidebarEmail').textContent  = user.email;
+
+        document.getElementById('sidebarLogoutBtn').addEventListener('click', function () {
+            showLogoutConfirm(this);
+        });
+
+        const storageKey = 'shoplocal_wishlist_' + user.id;
+        function loadWishlist() {
+            try { return JSON.parse(localStorage.getItem(storageKey) || '[]'); } catch (e) { return []; }
+        }
+        function saveWishlist(list) {
+            localStorage.setItem(storageKey, JSON.stringify(list));
+        }
+
+        function render() {
+            const ids   = loadWishlist();
+            const grid  = document.getElementById('wishlistGrid');
+            const empty = document.getElementById('wishlistEmpty');
+
+            if (ids.length === 0) {
+                grid.innerHTML = '';
+                empty.hidden = false;
+                return;
+            }
+            empty.hidden = true;
+
+            grid.innerHTML = ids.map(id => {
+                const p = getProductById(id);
+                if (!p) return '';
+                return `
+                <article class="product-card wishlist-card" data-id="${p.id}">
+                    <a href="product-detail.html?id=${p.id}" class="product-card-image">
+                        <img src="${p.images[0]}" alt="${p.name}">
+                    </a>
+                    <div class="product-card-content">
+                        <p class="product-card-category">${p.categoryName}</p>
+                        <h3 class="product-card-title">${p.name}</h3>
+                        <p class="product-card-price">${formatPrice(p.price)}</p>
+                    </div>
+                    <div class="product-card-footer wishlist-card-footer">
+                        <button class="btn btn-primary btn-block wishlist-add-btn" data-id="${p.id}" ${!p.inStock ? 'disabled' : ''}>
+                            ${p.inStock ? 'Add to Cart' : 'Out of Stock'}
+                        </button>
+                        <button class="btn-link wishlist-remove-btn" data-id="${p.id}" aria-label="Remove from wishlist">✕ Remove</button>
+                    </div>
+                </article>`;
+            }).join('');
+
+            grid.querySelectorAll('.wishlist-add-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    addToCart(parseInt(this.dataset.id), 1);
+                    showNotification('Added to cart!', 'success');
+                });
+            });
+
+            grid.querySelectorAll('.wishlist-remove-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const list = loadWishlist().filter(id => id !== parseInt(this.dataset.id));
+                    saveWishlist(list);
+                    render();
+                });
+            });
+        }
+
+        render();
+
+        // Also expose a global so product-detail.html's wishlist btn can save here
+        window.toggleWishlistItem = function(productId) {
+            let list = loadWishlist();
+            if (list.includes(productId)) {
+                list = list.filter(id => id !== productId);
+            } else {
+                list.push(productId);
+            }
+            saveWishlist(list);
+            return list.includes(productId);
+        };
+    });
+    </script>
+</body>
+</html>

@@ -964,6 +964,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize common components
     initMobileMenu();
     updateCartCount();
+
+    // Sync auth state on every page (requires auth.js loaded before main.js)
+    if (typeof initAuth === 'function')     initAuth();
+    if (typeof updateAuthUI === 'function') updateAuthUI();
     
     // Initialize page-specific functionality
     loadFeaturedProducts();

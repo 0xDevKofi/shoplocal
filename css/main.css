@@ -1035,3 +1035,474 @@ fieldset legend {
     color: white;
 }
 
+/* ========== AUTHENTICATION PAGES STYLING ========== */
+
+.auth-page {
+    background-color: var(--color-background);
+    padding: var(--space-3xl) 0;
+    min-height: calc(100vh - var(--header-height-desktop));
+    display: flex;
+    align-items: center;
+}
+
+.auth-container {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.auth-card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border-light);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.auth-header h1 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-xs);
+}
+
+.auth-header p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* Form Structural Controls */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.form-field label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.form-field label .required {
+    color: var(--color-error);
+}
+
+/* Input Fields Design Styling */
+.form-field input {
+    width: 100%;
+    padding: 0.75rem var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    background-color: var(--color-surface-alt);
+    transition: all var(--transition-fast);
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(172, 134, 111, 0.15); /* Primary alpha highlight */
+}
+
+.form-field input.invalid {
+    border-color: var(--color-error);
+}
+
+/* Password Group Elements wrapper */
+.password-input-wrapper,
+.password-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-field input,
+.password-input-wrapper input {
+    padding-right: 3rem; /* Make room for the eye icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: var(--space-md);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    transition: color var(--transition-fast);
+    z-index: 1;
+}
+
+.toggle-password:hover {
+    color: var(--color-text-primary);
+}
+
+/* Inline Grid Layouts */
+.form-row-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+@media (max-width: 480px) {
+    .form-row-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Error messages design code */
+.error-message {
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
+    display: none;
+    margin-top: var(--space-2xs);
+}
+
+.error-message.active {
+    display: block;
+}
+
+/* Bottom utilities container */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-xs);
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    cursor: pointer;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: var(--space-xl);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+/* ========== ACCOUNT / PROFILE PAGE ========== */
+
+.account-page {
+    padding: var(--space-3xl) 0;
+    background-color: var(--color-background);
+    min-height: calc(100vh - var(--header-height-desktop));
+}
+
+.account-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-xl);
+}
+
+@media (min-width: 1024px) {
+    .account-layout {
+        grid-template-columns: 260px 1fr;
+    }
+}
+
+/* Sidebar */
+.account-sidebar {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    align-self: start;
+    position: sticky;
+    top: calc(var(--header-height-desktop) + var(--space-lg));
+}
+
+.account-sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-lg);
+}
+
+.account-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    flex-shrink: 0;
+}
+
+.account-sidebar-name {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-md);
+}
+
+.account-sidebar-email {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+.account-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.account-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    background: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+}
+
+.account-nav-link:hover {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+}
+
+.account-nav-link.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+}
+
+.account-nav-logout {
+    color: var(--color-error);
+}
+
+.account-nav-logout:hover {
+    background-color: rgba(214, 118, 118, 0.1);
+    color: var(--color-error);
+}
+
+.account-nav-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin: var(--space-sm) 0;
+}
+
+.nav-icon {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Account Content */
+.account-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.account-content-header {
+    margin-top: 40px;
+    margin-bottom: var(--space-sm);
+}
+
+.account-content-header h1 {
+    margin-bottom: var(--space-xs);
+}
+
+.account-content-header p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+/* Profile Sections */
+.profile-section {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+}
+
+.profile-section h2 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+    .profile-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.profile-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.profile-field label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.profile-field input {
+    width: 100%;
+    padding: 0.75rem var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    background-color: var(--color-surface-alt);
+    transition: all var(--transition-fast);
+}
+
+.profile-field input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(172, 134, 111, 0.15);
+}
+
+.profile-field input[readonly] {
+    background-color: var(--color-background);
+    color: var(--color-text-tertiary);
+    cursor: not-allowed;
+}
+
+.profile-field input.invalid {
+    border-color: var(--color-error);
+}
+
+.profile-save-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ── Black Radio Buttons (Preferences section) ── */
+
+.pref-fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: var(--space-lg);
+}
+
+.pref-legend {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+    display: block;
+}
+
+.pref-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.pref-radio-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+    user-select: none;
+}
+
+.pref-radio-label:hover {
+    color: var(--color-text-primary);
+}
+
+/* Hide native radio */
+.pref-radio-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+/* Custom radio dot — unchecked */
+.pref-radio-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background-color: transparent;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+/* Inner filled dot — hidden by default */
+.pref-radio-dot::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: transform var(--transition-fast);
+}
+
+/* Checked state — black fill */
+.pref-radio-label input[type="radio"]:checked + .pref-radio-dot {
+    background-color: #000;
+    border-color: #000;
+}
+
+.pref-radio-label input[type="radio"]:checked + .pref-radio-dot::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Focus ring for accessibility */
+.pref-radio-label input[type="radio"]:focus-visible + .pref-radio-dot {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* about page  */
+.about-hero-content{
+    margin-top: 100px;
+}
