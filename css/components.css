@@ -508,6 +508,10 @@ textarea {
     transform: translateY(-50%);
 }
 
+.header-search-bar{
+    margin-top: 10px;
+}
+
 /* ========== AUTH LINKS ========== */
 
 .auth-links {
